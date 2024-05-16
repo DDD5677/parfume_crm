@@ -51,6 +51,8 @@ export const useReserveStore = defineStore("reserve", () => {
          ReserveService.getReserveHistory(payload)
             .then((response) => {
                historyReserves.value = response.data.store_histories;
+               pageSize.value = response.data.page_size || 1;
+               currentPage.value = response.data.current_page || 1;
                historyLoading.value = false;
             })
             .catch((error) => {
