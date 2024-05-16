@@ -1,0 +1,15 @@
+@import "./base.css";
+
+.title {
+   font-size: 50px;
+   color: #04178b;
+   font-weight: 700;
+   text-transform: uppercase;
+}
+.route {
+   font-size: 17px;
+   text-transform: uppercase;
+}
+.route .active {
+   color: #04178b;
+}
