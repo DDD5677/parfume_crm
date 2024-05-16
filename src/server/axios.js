@@ -2,7 +2,8 @@ import { getItem, setItem } from "@/helpers/localStorage";
 import axios from "axios";
 import router from "@/router";
 
-axios.defaults.baseURL = import.meta.env.VITE_BASE_URL + "/api/v1";
+//axios.defaults.baseURL = import.meta.env.VITE_BASE_URL + "/api/v1";
+axios.defaults.baseURL = "https://mparfume.store" + "/api/v1";
 //axios.defaults.baseURL = "http://139.162.109.251:8000/api/v1";
 
 axios.interceptors.request.use((config) => {
