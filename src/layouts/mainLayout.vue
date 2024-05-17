@@ -42,8 +42,10 @@
 			</el-aside>
 			<el-container>
 				<el-header class="header" :height="'85px'">
-
-					<img class="notify" src="@/assets/images/bell.svg" alt="" @click="dialogNotification = true">
+					<div style="display: flex; align-items: center;gap: 15px">
+						<img class="notify" src="@/assets/images/bell.svg" alt="" @click="dialogNotification = true">
+						<img class="logout" src="@/assets/images/logout.svg" alt="" @click="logout">
+					</div>
 				</el-header>
 				<el-main class="main">
 					<slot></slot>
@@ -97,6 +99,12 @@ const goToStore = (notify) => {
 	router.push({ name: 'reserves', query: { reserve_id: notify.store_id } })
 	dialogNotification.value = false
 }
+
+const logout = () => {
+	localStorage.removeItem('refreshtoken')
+	localStorage.removeItem('accesstoken')
+	router.replace({ name: 'login' })
+}
 </script>
 
 <style lang="scss">
@@ -112,9 +120,12 @@ const goToStore = (notify) => {
 	-moz-box-shadow: 2px -1px 5px 2px rgba(0, 0, 0, 0.1);
 
 	.brand {
+		overflow: hidden;
+		display: flex;
+		justify-content: center;
+
 		img {
-			width: 100%;
-			object-fit: contain;
+			transform: scale(1.2);
 		}
 	}
 
@@ -167,6 +178,11 @@ const goToStore = (notify) => {
 	}
 
 	.notify {
+		width: 50px;
+		cursor: pointer;
+	}
+
+	.logout {
 		cursor: pointer;
 	}
 }

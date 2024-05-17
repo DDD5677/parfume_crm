@@ -137,13 +137,12 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import { ElNotification } from 'element-plus'
 import { reactive } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '@/stores/productStore';
-import { imageUrl } from '@/helpers/imageUrl';
 import { dateFormat } from '@/helpers/formatDate';
 import { useBrandStore } from '@/stores/brandStore';
 import { useCategoryStore } from '@/stores/categoryStore';

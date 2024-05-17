@@ -1,11 +1,11 @@
 <template>
 	<div class="common-layout">
 		<el-container>
-			<el-header class="header" :height="'85px'">
+			<el-header class="header1" :height="'85px'">
 				<div class="brand">
 					<img src="@/assets/images/logo.svg" />
 				</div>
-				<img src="@/assets/images/bell.svg" alt="">
+				<img class="notify" src="@/assets/images/bell.svg" alt="">
 			</el-header>
 			<el-main>
 				<el-row justify="center">
@@ -57,10 +57,21 @@ const loginHandler = () => {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.header1 {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	.brand {
+		img {
+
+			width: 300px;
+		}
+	}
+
+	.notify {
+		width: 50px;
+	}
 }
 
 .el-main {

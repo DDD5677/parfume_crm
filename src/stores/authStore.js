@@ -6,7 +6,6 @@ export const useAuthStore = defineStore("auth", () => {
    const isLogged = ref(false);
    const isLoading = ref(false);
    const errors = ref(null);
-   const accessToken = ref("");
 
    function login(userData) {
       return new Promise((resolve, reject) => {
@@ -19,12 +18,11 @@ export const useAuthStore = defineStore("auth", () => {
                setItem("refreshtoken", response.data.refresh);
                isLoading.value = false;
                isLogged.value = true;
-               console.log(response);
                resolve(true);
             })
             .catch((error) => {
                isLoading.value = false;
-               //errors.value = error.response.data;
+               errors.value = error;
                console.log(error);
                reject(error.response);
             });

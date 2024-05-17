@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import ReserveService from "@/server/reserve";
 export const useReserveStore = defineStore("reserve", () => {
@@ -86,7 +86,6 @@ export const useReserveStore = defineStore("reserve", () => {
          errors.value = null;
          ReserveService.postReserves(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve(response.data);
             })
@@ -104,7 +103,6 @@ export const useReserveStore = defineStore("reserve", () => {
          errors.value = null;
          ReserveService.updateReserves(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve();
             })

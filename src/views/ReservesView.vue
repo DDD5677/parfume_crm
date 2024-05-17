@@ -260,7 +260,6 @@ const updateReserves = () => {
 		drawerReserveUpdate.value = false;
 		router.replace({ name: 'reserves' })
 	})
-	console.log(reserve)
 }
 
 
@@ -278,7 +277,6 @@ onMounted(() => {
 	reserveStore.getReserves({ page: 1, filter: filter.value })
 	//check query params
 	if (route.query.reserve_id) {
-		console.log(route.query.reserve_id)
 		reserveStore.getOneReserves(route.query.reserve_id).then((item) => {
 			productStore.searchProducts({ search: 'armani' })
 			console.log(item)

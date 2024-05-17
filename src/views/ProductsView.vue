@@ -111,7 +111,7 @@
 <script setup>
 import Product from '@/components/Product.vue'
 import { ref } from 'vue';
-import { ElMessage, ElNotification } from 'element-plus'
+import { ElNotification } from 'element-plus'
 import { reactive } from 'vue'
 import { UploadFilled } from '@element-plus/icons-vue'
 import { useCategoryStore } from '@/stores/categoryStore';

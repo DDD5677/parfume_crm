@@ -8,7 +8,7 @@
 <script>
 import mainLayout from './layouts/mainLayout.vue';
 import emptyLayout from './layouts/emptyLayout.vue';
-import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 import { computed, defineComponent } from 'vue';
 
 export default defineComponent({

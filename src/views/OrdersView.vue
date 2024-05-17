@@ -138,7 +138,7 @@
 	</el-drawer>
 	<el-dialog v-model="filterOrder" title="Filter" width="700">
 
-		<el-tabs v-model="activeName" type="card" class="demo-tabs" @tab-click="handleClick">
+		<el-tabs v-model="activeName" type="card" class="demo-tabs">
 			<el-tab-pane label="Barchasi" name="all"></el-tab-pane>
 			<el-tab-pane label="Bugungi" name="today"></el-tab-pane>
 			<el-tab-pane name="status">
@@ -150,7 +150,13 @@
 					</el-select>
 				</template>
 			</el-tab-pane>
-			<el-tab-pane label="Boshqa" name="date"> <el-calendar v-model="calendarValue" /></el-tab-pane>
+			<el-tab-pane label="Boshqa" name="date">
+				<div class="calendar">
+
+					<el-date-picker v-model="calendarValue" type="daterange" range-separator="-->"
+						start-placeholder="Sanadan" end-placeholder="Sanagacha" />
+				</div>
+			</el-tab-pane>
 		</el-tabs>
 
 		<template #footer>
@@ -170,13 +176,11 @@ import { Search, Edit, Delete, Coin } from '@element-plus/icons-vue'
 import { reactive } from 'vue'
 import { useOrderStore } from '@/stores/orderStore';
 import { dateFormat } from '@/helpers/formatDate';
-import { useProductStore } from '@/stores/productStore';
 import { useReserveStore } from '@/stores/reserveStore';
 import { ElNotification } from 'element-plus';
 import router from '@/router';
 //stores
 const orderStore = useOrderStore()
-const productStore = useProductStore()
 const reserveStore = useReserveStore()
 //date formatter
 const formatterDate = (row, column, date, index) => {
@@ -236,7 +240,7 @@ const postOrder = () => {
 		price: customPrice.value ? +order.customPrice : +order.price
 	}
 
-	console.log(data)
+
 	orderStore.postOrders(data).then((res) => {
 		orderStore.getOrders({ page: 1 })
 		drawerOrder.value = false
@@ -252,7 +256,7 @@ const drawerOrderUpdate = ref(false)
 const editedOrderId = ref(null)
 const handleEdit = (index, item) => {
 	reserveStore.searchReserves({ search: item.product_id })
-	console.log(item)
+
 	order.price = item.price;
 	order.count = item.count;
 	order.product = item.store_id;
@@ -273,8 +277,7 @@ const updateOrder = () => {
 		count: +order.count,
 		price: customPrice.value ? +order.customPrice : +order.price
 	}
-	//update is pending
-	console.log(data)
+
 	orderStore.updateOrders(data).then((res) => {
 		orderStore.getOrders({ page: 1 })
 		drawerOrderUpdate.value = false
@@ -283,8 +286,7 @@ const updateOrder = () => {
 
 //delete Order
 const handleDelete = (index, item) => {
-	console.log(item)
-	//delete is pending
+
 	orderStore.deleteOrders(item.id).then((res) => {
 		orderStore.getOrders({ page: 1 })
 	})
@@ -300,18 +302,14 @@ watch(orderSearch, () => {
 const filterOrder = ref(false)
 const activeName = ref('all')
 const filterByStatus = ref('')
-const calendarValue = ref(new Date())
+const calendarValue = ref(null)
 const handleFilter = () => {
 	filterOrder.value = true
-}
-const handleClick = (tab, event) => {
-	//console.log(tab, event)
 }
 const handleStatusChange = () => {
 	activeName.value = 'status'
 }
 const handleFilterOrders = () => {
-	console.log(activeName.value)
 	switch (activeName.value) {
 		case 'today':
 			orderStore.filterOrderByToday({ page: 1 }).then(() => {
@@ -324,7 +322,7 @@ const handleFilterOrders = () => {
 			})
 			break;
 		case 'date':
-			orderStore.filterOrderByDate({ start_date: dateFormat(calendarValue.value), page: 1 }).then((res) => {
+			orderStore.filterOrderByDate({ start_date: dateFormat(calendarValue.value[0]), end_date: dateFormat(calendarValue.value[1]), page: 1 }).then((res) => {
 				filterOrder.value = false
 			})
 			break;
@@ -356,9 +354,7 @@ const handleCurrentChange = (val) => {
 
 }
 
-//have to do 
-//-update order
-//-fix store-search in select
+
 </script>
 
 <style lang="scss">
@@ -447,6 +443,12 @@ const handleCurrentChange = (val) => {
 .el-tabs {
 	#tab-third {
 		padding: 0;
+	}
+
+	.calendar {
+		margin: 20px 0;
+		display: flex;
+		justify-content: center;
 	}
 
 	.el-tabs__header {

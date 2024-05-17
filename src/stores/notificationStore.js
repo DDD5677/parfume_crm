@@ -28,7 +28,6 @@ export const useNotificationStore = defineStore("notification", () => {
          errors.value = null;
          NotificationService.getOneNotification(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve();
             })
@@ -45,7 +44,6 @@ export const useNotificationStore = defineStore("notification", () => {
          errors.value = null;
          NotificationService.deleteNotification(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve();
             })

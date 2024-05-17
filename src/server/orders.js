@@ -19,6 +19,7 @@ const OrderService = {
          params: {
             page: payload.page,
             start_date: payload.start_date,
+            end_date: payload.end_date,
          },
       });
    },

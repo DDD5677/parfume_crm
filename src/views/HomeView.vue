@@ -195,7 +195,7 @@ import {
 	Legend,
 } from 'chart.js'
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import { onMounted, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { Line, Doughnut } from 'vue-chartjs'
 
 const dashboardStore = useDashboardStore()
@@ -261,33 +261,6 @@ dashboardStore.getTopBrands()
 
 //get top products
 dashboardStore.getTopProducts()
-
-const tableData = [
-	{
-		date: 'Chanel',
-		name: '15k',
-		address: '$9998',
-	},
-	{
-		date: 'Chanel',
-		name: '15k',
-		address: '$9998',
-	},
-	{
-		date: 'Chanel',
-		name: '15k',
-		address: '$9998',
-	},
-	{
-		date: 'Chanel',
-		name: '15k',
-		address: '$9998',
-	},
-	{
-		date: 'Chanel',
-		name: '15k',
-		address: '$9998',
-	},]
 
 
 

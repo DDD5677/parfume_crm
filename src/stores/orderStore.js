@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 import OrderService from "@/server/orders";
 export const useOrderStore = defineStore("orders", () => {
@@ -50,7 +50,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.filterOrderByStatus(payload)
             .then((response) => {
-               console.log(response);
                orders.value = response.data.data?.results;
                pageSize.value = response.data.data.page_size || 1;
                currentPage.value = response.data.data.current_page || 1;
@@ -70,7 +69,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.filterOrderByToday(payload)
             .then((response) => {
-               console.log(response);
                orders.value = response.data.data?.results;
                pageSize.value = response.data.data.page_size || 1;
                currentPage.value = response.data.data.current_page || 1;
@@ -90,7 +88,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.filterOrderByDate(payload)
             .then((response) => {
-               console.log(response);
                orders.value = response.data.data?.results;
                pageSize.value = response.data.data.page_size || 1;
                currentPage.value = response.data.data.current_page || 1;
@@ -110,7 +107,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.postOrders(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve(response.data);
             })
@@ -127,7 +123,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.updateOrders(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve();
             })
@@ -145,7 +140,6 @@ export const useOrderStore = defineStore("orders", () => {
          errors.value = null;
          OrderService.deleteOrders(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                resolve();
             })

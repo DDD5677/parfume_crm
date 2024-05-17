@@ -1,6 +1,5 @@
-import { ref, computed, reactive } from "vue";
+import { ref, reactive } from "vue";
 import { defineStore } from "pinia";
-import { setItem } from "@/helpers/localStorage";
 import DashboardService from "@/server/dashboard";
 
 export const useDashboardStore = defineStore("dashboard", () => {
@@ -29,7 +28,6 @@ export const useDashboardStore = defineStore("dashboard", () => {
          errors.value = null;
          DashboardService.getStatistics(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                statistics.chiqim = response.data.data.chiqim;
                statistics.kirim = response.data.data.kirim;
@@ -49,7 +47,6 @@ export const useDashboardStore = defineStore("dashboard", () => {
          errors.value = null;
          DashboardService.getDiagram(payload)
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                if (payload === "today") {
                   diagram.labels = Object.keys(response.data.data).map((l) => {
@@ -62,7 +59,6 @@ export const useDashboardStore = defineStore("dashboard", () => {
                }
                diagram.labels = diagram.labels.reverse();
                diagram.values = Object.values(response.data.data);
-               console.log(diagram);
                resolve(diagram);
             })
             .catch((error) => {
@@ -78,7 +74,6 @@ export const useDashboardStore = defineStore("dashboard", () => {
          errors.value = null;
          DashboardService.getChart()
             .then((response) => {
-               console.log(response);
                isLoading.value = false;
                chartData.value = [
                   response.data.data.total_price_by_cash,
