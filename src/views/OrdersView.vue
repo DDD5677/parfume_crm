@@ -242,10 +242,18 @@ const postOrder = () => {
 
 
 	orderStore.postOrders(data).then((res) => {
-		ElNotification({
-			title: "Xarid qo'shildi",
-			type: 'success',
-		})
+
+		if (res.success) {
+			ElNotification({
+				title: "Xarid qo'shildi",
+				type: 'success',
+			})
+		} else {
+			ElNotification.error({
+				title: 'Error',
+				message: res.message,
+			})
+		}
 		orderStore.getOrders({ page: 1 })
 		drawerOrder.value = false
 	}).catch(() => {
