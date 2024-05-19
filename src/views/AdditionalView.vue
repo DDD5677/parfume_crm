@@ -173,7 +173,17 @@ const openCategoryModal = () => {
 }
 
 const handlePostCategory = () => {
-	categoryStore.postCategory({ name: categoryName.value })
+	categoryStore.postCategory({ name: categoryName.value }).then(() => {
+		ElNotification({
+			title: "Kategoriya qo'shildi",
+			type: 'success',
+		})
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
+	})
 }
 
 const handleEditCategory = (index, row) => {
@@ -184,10 +194,19 @@ const handleEditCategory = (index, row) => {
 
 const handleUpdateCategory = () => {
 	categoryStore.updateCategory({ id: updatedCategory.value.id, name: categoryName.value }).then(() => {
+		ElNotification({
+			title: "Kategoriya tahrirlandi",
+			type: 'success',
+		})
 		categoryStore.getCategory()
 		updateCategoryModal.value = false
 		categoryName.value = ''
 		updatedCategory.value = null
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 
@@ -205,7 +224,17 @@ const openBrandModal = () => {
 }
 
 const handlePostBrand = () => {
-	brandStore.postBrands({ name: brandName.value })
+	brandStore.postBrands({ name: brandName.value }).then(() => {
+		ElNotification({
+			title: "Brand qo'shildi",
+			type: 'success',
+		})
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
+	})
 }
 
 const handleEditBrand = (index, row) => {
@@ -216,10 +245,19 @@ const handleEditBrand = (index, row) => {
 
 const handleUpdateBrand = () => {
 	brandStore.updateBrands({ id: updatedBrand.value.id, name: brandName.value }).then(() => {
+		ElNotification({
+			title: "Brand tahrirlandi",
+			type: 'success',
+		})
 		brandStore.getBrands()
 		updateBrandModal.value = false
 		brandName.value = ''
 		updatedBrand.value = null
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 

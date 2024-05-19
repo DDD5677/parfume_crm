@@ -151,7 +151,17 @@ const handleFile = (file) => {
 
 }
 const handlePostProduct = () => {
-	productStore.postProduct(product)
+	productStore.postProduct(product).then(() => {
+		ElNotification({
+			title: "Mahsulot qo'shildi",
+			type: 'success',
+		})
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
+	})
 }
 const drawer = ref(false)
 //category

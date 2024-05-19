@@ -67,11 +67,13 @@ export const useProductStore = defineStore("product", () => {
          ProductService.postProduct(product)
             .then((response) => {
                isLoading.value = false;
+               resolve();
             })
             .catch((error) => {
                isLoading.value = false;
                errors.value = error;
                console.log(error);
+               reject(error);
             });
       });
    }

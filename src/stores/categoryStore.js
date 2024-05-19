@@ -32,11 +32,13 @@ export const useCategoryStore = defineStore("category", () => {
          CategoryService.postCategory(brand)
             .then((response) => {
                isLoading.value = false;
+               resolve();
             })
             .catch((error) => {
                isLoading.value = false;
                errors.value = error;
                console.log(error);
+               reject();
             });
       });
    }

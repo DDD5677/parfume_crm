@@ -242,8 +242,17 @@ const postOrder = () => {
 
 
 	orderStore.postOrders(data).then((res) => {
+		ElNotification({
+			title: "Xarid qo'shildi",
+			type: 'success',
+		})
 		orderStore.getOrders({ page: 1 })
 		drawerOrder.value = false
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 
@@ -279,8 +288,17 @@ const updateOrder = () => {
 	}
 
 	orderStore.updateOrders(data).then((res) => {
+		ElNotification({
+			title: "Xarid tahrirlandi",
+			type: 'success',
+		})
 		orderStore.getOrders({ page: 1 })
 		drawerOrderUpdate.value = false
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 
@@ -288,7 +306,16 @@ const updateOrder = () => {
 const handleDelete = (index, item) => {
 
 	orderStore.deleteOrders(item.id).then((res) => {
+		ElNotification({
+			title: "Xarid o'chirildi",
+			type: 'success',
+		})
 		orderStore.getOrders({ page: 1 })
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 

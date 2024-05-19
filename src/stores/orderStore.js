@@ -114,6 +114,7 @@ export const useOrderStore = defineStore("orders", () => {
                isLoading.value = false;
                errors.value = error;
                console.log(error);
+               reject();
             });
       });
    }

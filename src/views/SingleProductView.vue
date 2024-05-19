@@ -195,11 +195,20 @@ productStore.getOneProduct(route.params.id).then((oneProduct) => {
 const handleUpdateProduct = () => {
 	productStore.updateProduct(product).then(() => {
 		drawer.value = false
+		ElNotification({
+			title: "Mahsulot tahrirlandi",
+			type: 'success',
+		})
 		productStore.getOneProduct(route.params.id).then((oneProduct) => {
 			product.name = oneProduct.name
 			product.desc = oneProduct.description
 			product.category = oneProduct.category.id
 			product.brand = oneProduct.brand.id
+		})
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
 		})
 	})
 }

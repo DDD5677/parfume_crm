@@ -255,9 +255,18 @@ const updateReserves = () => {
 		count: +reserve.count,
 	}
 	reserveStore.updateReserves(data).then((res) => {
+		ElNotification({
+			title: "Zaxira tahrirlandi",
+			type: 'success',
+		})
 		reserveStore.getReserves({ page: 1, filter: filter.value })
 		drawerReserveUpdate.value = false;
 		router.replace({ name: 'reserves' })
+	}).catch(() => {
+		ElNotification({
+			title: "Xatolik",
+			type: 'error',
+		})
 	})
 }
 
