@@ -10,7 +10,7 @@ const ProductService = {
    searchProducts(payload) {
       return axios.get("/product-search/", {
          params: {
-            search: payload,
+            search: payload.search,
          },
       });
    },

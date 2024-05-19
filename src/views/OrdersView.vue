@@ -194,7 +194,7 @@ const handleSelectionChange = (orders) => {
 }
 //calculate total price
 const calculateTotal = () => {
-	const total = selectedOrders.value.reduce((a, b) => a + b.price, 0)
+	const total = selectedOrders.value.reduce((a, b) => a + b.price * b.count, 0)
 	ElNotification({
 		title: 'Jami',
 		message: String(total),

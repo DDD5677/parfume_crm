@@ -238,7 +238,7 @@ const postReserves = () => {
 const drawerReserveUpdate = ref(false)
 const editedReserveId = ref(null)
 const handleEdit = (index, item) => {
-	productStore.searchProducts({ id: item.product })
+	productStore.searchProducts({ search: item.product })
 	reserve.product = item.product
 	reserve.buy_price = item.buy_price;
 	reserve.sell_price = item.sell_price;
