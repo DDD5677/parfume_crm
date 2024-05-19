@@ -49,7 +49,7 @@
 				</template>
 				<template #default>
 					<el-row>
-						<el-col :span="8" v-for="product in productStore.products" :key="product.id">
+						<el-col :span="8" v-for="product in productStore.products" :key="product.id" style="padding: 15px;">
 							<Product :product="product" />
 
 						</el-col>
@@ -187,9 +187,7 @@ brandStore.getBrands()
 
 	.body {
 
-		.product {
-			margin: 25px 20px;
-		}
+
 
 		.table-footer {
 			margin-top: 35px;

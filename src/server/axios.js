@@ -26,7 +26,7 @@ axios.interceptors.response.use(
                }
             })
             .catch((err) => {
-               if (err.response.status === 401) {
+               if (err) {
                   router.replace("/login");
                }
             });

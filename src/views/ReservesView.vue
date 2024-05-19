@@ -165,7 +165,7 @@ const handleSelectionChange = (orders) => {
 
 //calculate total price
 const calculateTotal = () => {
-	const total = selectedOrders.value.reduce((a, b) => a + b.sell_price, 0)
+	const total = selectedOrders.value.reduce((a, b) => a + b.sell_price * b.count, 0)
 	ElNotification({
 		title: 'Jami',
 		message: String(total),
@@ -239,7 +239,6 @@ const drawerReserveUpdate = ref(false)
 const editedReserveId = ref(null)
 const handleEdit = (index, item) => {
 	productStore.searchProducts({ id: item.product })
-	console.log(item)
 	reserve.product = item.product
 	reserve.buy_price = item.buy_price;
 	reserve.sell_price = item.sell_price;
@@ -278,8 +277,7 @@ onMounted(() => {
 	//check query params
 	if (route.query.reserve_id) {
 		reserveStore.getOneReserves(route.query.reserve_id).then((item) => {
-			productStore.searchProducts({ search: 'armani' })
-			console.log(item)
+			productStore.searchProducts({ search: item.product })
 			reserve.product = item.product
 			reserve.buy_price = item.buy_price;
 			reserve.sell_price = item.sell_price;

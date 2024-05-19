@@ -14,7 +14,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
       values: null,
    });
    const chartData = ref([0, 0]);
-   const totalPrice = ref(2);
+   const totalPrice = ref(0);
    const isLoading = ref(false);
    const errors = ref(null);
    const topBrands = ref(null);

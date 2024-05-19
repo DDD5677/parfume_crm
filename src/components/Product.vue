@@ -31,17 +31,21 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .product {
+	height: 100%;
 	background-color: rgba(236, 236, 246, .439);
 	border: 2px solid rgba(236, 236, 246, .439);
 	border-radius: 20px;
 
 	.img-box {
+		height: 380px;
 		border-radius: 16px 16px 0 0;
 		overflow: hidden;
 
 		img {
 			width: 100%;
+			height: 100%;
 			transition: all 0.3s ease-in;
+			object-fit: cover;
 
 			&:hover {
 				transform: scale(1.05);

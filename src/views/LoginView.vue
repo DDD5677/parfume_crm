@@ -3,7 +3,7 @@
 		<el-container>
 			<el-header class="header1" :height="'85px'">
 				<div class="brand">
-					<img src="@/assets/images/logo.svg" />
+					<RouterLink :to="{ name: 'home' }"><img src="@/assets/images/logo.svg" /></RouterLink>
 				</div>
 				<img class="notify" src="@/assets/images/bell.svg" alt="">
 			</el-header>
@@ -12,12 +12,12 @@
 					<el-col :xs="23" :sm="18" :md="15" :lg="10">
 						<el-card>
 							<h3>Login</h3>
-							<p class="subtitle">PLEASE ENTER YOUR EMAIL AND PASSWORD TO CONTINUE</p>
+							<p class="subtitle">PLEASE ENTER YOUR USERNAME AND PASSWORD TO CONTINUE</p>
 							<form action="" @submit.prevent="loginHandler">
 								<div>
 									<label for="email">
-										Email
-										<input type="text" id="email" placeholder="Please enter your email" v-model="email"
+										Username
+										<input type="text" id="email" placeholder="Please enter your username" v-model="email"
 											required>
 									</label>
 									<label for="password">

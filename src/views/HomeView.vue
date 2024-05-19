@@ -33,7 +33,7 @@
 									<img src="@/assets/images/kirim.svg" alt="">
 								</div>
 								<div class="amount">
-									{{ dashboardStore.statistics.kirim % 10000 }}sum
+									{{ dashboardStore.statistics.kirim }}sum
 								</div>
 							</el-card>
 						</template>
@@ -92,7 +92,7 @@
 									<img src="@/assets/images/foyda.svg" alt="">
 								</div>
 								<div class="amount">
-									{{ dashboardStore.statistics.foyda % 10000 }}sum
+									{{ dashboardStore.statistics.foyda }}sum
 								</div>
 							</el-card>
 						</template>
@@ -152,7 +152,7 @@
 								<Doughnut :data="dataChart" :options="optionsChart" />
 							</div>
 							<h4>Umumiy</h4>
-							<div class="total">514.4k</div>
+							<div class="total">{{ dashboardStore.totalPrice }}</div>
 						</template>
 
 					</el-skeleton>
