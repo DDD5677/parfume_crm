@@ -58,7 +58,7 @@ export const useDashboardStore = defineStore("dashboard", () => {
                   });
                }
                diagram.labels = diagram.labels.reverse();
-               diagram.values = Object.values(response.data.data);
+               diagram.values = Object.values(response.data.data).reverse();
                resolve(diagram);
             })
             .catch((error) => {

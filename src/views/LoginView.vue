@@ -1,38 +1,31 @@
 <template>
 	<div class="common-layout">
-		<el-container>
-			<el-header class="header1" :height="'85px'">
-				<div class="brand">
-					<RouterLink :to="{ name: 'home' }"><img src="@/assets/images/logo.svg" /></RouterLink>
-				</div>
-				<img class="notify" src="@/assets/images/bell.svg" alt="">
-			</el-header>
-			<el-main>
-				<el-row justify="center">
-					<el-col :xs="23" :sm="18" :md="15" :lg="10">
-						<el-card>
-							<h3>Login</h3>
-							<p class="subtitle">PLEASE ENTER YOUR USERNAME AND PASSWORD TO CONTINUE</p>
-							<form action="" @submit.prevent="loginHandler">
-								<div>
-									<label for="email">
-										Username
-										<input type="text" id="email" placeholder="Please enter your username" v-model="email"
-											required>
-									</label>
-									<label for="password">
-										Password
-										<input type="password" id="password" placeholder="Please enter your password" required
-											v-model="password">
-									</label>
-								</div>
-								<dark-button>Login</dark-button>
-							</form>
-						</el-card>
-					</el-col>
-				</el-row>
-			</el-main>
-		</el-container>
+		<div class="login-form">
+			<el-row justify="center" style="width:100%">
+				<el-col :xs="23" :sm="18" :md="15" :lg="10">
+					<el-card>
+						<h3>Login</h3>
+						<p class="subtitle">PLEASE ENTER YOUR USERNAME AND PASSWORD TO CONTINUE</p>
+						<form action="" @submit.prevent="loginHandler">
+							<div>
+								<label for="email">
+									Username
+									<input type="text" id="email" placeholder="Please enter your username" v-model="email"
+										required>
+								</label>
+								<label for="password">
+									Password
+									<input type="password" id="password" placeholder="Please enter your password" required
+										v-model="password">
+								</label>
+							</div>
+							<dark-button>Login</dark-button>
+						</form>
+					</el-card>
+				</el-col>
+			</el-row>
+
+		</div>
 	</div>
 </template>
 
@@ -57,29 +50,22 @@ const loginHandler = () => {
 </script>
 
 <style lang="scss" scoped>
-.header1 {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-
-	.brand {
-		img {
-
-			width: 300px;
-		}
-	}
-
-	.notify {
-		width: 50px;
-	}
-}
-
-.el-main {
-	min-height: 100vh;
+.common-layout {
 	background: rgb(4, 23, 139);
 	background: linear-gradient(200deg, rgba(4, 23, 139, 1) 10%, rgba(82, 139, 255, 1) 100%);
+}
+
+.login-form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	min-height: 100vh;
+
+
 
 	.el-card {
+
 		color: #06002E;
 		padding: 30px 50px 40px;
 		border-radius: 30px;
