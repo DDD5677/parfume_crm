@@ -145,6 +145,7 @@ import { ref } from 'vue';
 import { useBrandStore } from '@/stores/brandStore.js'
 import { useCategoryStore } from '@/stores/categoryStore.js'
 import { dateFormat } from '@/helpers/formatDate';
+import { ElNotification } from 'element-plus';
 //stores
 const categoryStore = useCategoryStore()
 const brandStore = useBrandStore()
@@ -178,6 +179,8 @@ const handlePostCategory = () => {
 			title: "Kategoriya qo'shildi",
 			type: 'success',
 		})
+		categoryStore.getCategory(1)
+		createCategoryModal.value = false
 	}).catch(() => {
 		ElNotification({
 			title: "Xatolik",
@@ -198,7 +201,7 @@ const handleUpdateCategory = () => {
 			title: "Kategoriya tahrirlandi",
 			type: 'success',
 		})
-		categoryStore.getCategory()
+		categoryStore.getCategory(1)
 		updateCategoryModal.value = false
 		categoryName.value = ''
 		updatedCategory.value = null
@@ -225,10 +228,12 @@ const openBrandModal = () => {
 
 const handlePostBrand = () => {
 	brandStore.postBrands({ name: brandName.value }).then(() => {
+		brandStore.getBrands(1)
 		ElNotification({
 			title: "Brand qo'shildi",
 			type: 'success',
 		})
+		createBrandModal.value = false
 	}).catch(() => {
 		ElNotification({
 			title: "Xatolik",
@@ -249,7 +254,7 @@ const handleUpdateBrand = () => {
 			title: "Brand tahrirlandi",
 			type: 'success',
 		})
-		brandStore.getBrands()
+		brandStore.getBrands(1)
 		updateBrandModal.value = false
 		brandName.value = ''
 		updatedBrand.value = null

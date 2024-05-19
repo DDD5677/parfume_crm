@@ -43,7 +43,10 @@
 			<el-container>
 				<el-header class="header" :height="'85px'">
 					<div style="display: flex; align-items: center;gap: 15px">
-						<img class="notify" src="@/assets/images/bell.svg" alt="" @click="dialogNotification = true">
+						<div class="notify">
+							<img src="@/assets/images/bell.svg" alt="" @click="dialogNotification = true">
+							<span class="notify-count">{{ notificationStore.notifications?.length }}</span>
+						</div>
 						<img class="logout" src="@/assets/images/logout.svg" alt="" @click="logout">
 					</div>
 				</el-header>
@@ -179,8 +182,30 @@ const logout = () => {
 	}
 
 	.notify {
+		position: relative;
+
+		img {
+			width: 100%;
+		}
+
 		width: 50px;
 		cursor: pointer;
+
+	}
+
+	.notify-count {
+		width: 25px;
+		height: 25px;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+		position: absolute;
+		font-size: 16px;
+		top: 0;
+		right: 0;
+		color: #fff;
+		background-color: rgb(227, 40, 40);
 	}
 
 	.logout {
