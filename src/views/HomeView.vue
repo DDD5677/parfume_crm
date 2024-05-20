@@ -170,7 +170,7 @@
 					element-loading-text="Loading..."
 					:header-cell-style="{ textTransform: 'uppercase', color: '#000', padding: '20px 8px' }"
 					:cell-style="{ padding: '20px 8px' }">
-					<el-table-column prop="product_name" label="Brand nomi" class-name="first-column" />
+					<el-table-column prop="product_name" label="Mahsulot nomi" class-name="first-column" />
 					<el-table-column prop="total_count" label="Xaridlar soni" align="center" />
 					<el-table-column prop="total_price" label="Umumiy xarid" align="center" />
 				</el-table>
