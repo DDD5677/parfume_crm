@@ -100,6 +100,7 @@ const deleteNotify = (id) => {
 const goToStore = (notify) => {
 	notificationStore.getOneNotification(notify.id)
 	notificationStore.getNotifications()
+	notificationStore.changeDeletedNotify(notify.id)
 	router.push({ name: 'reserves', query: { reserve_id: notify.store_id } })
 	dialogNotification.value = false
 }

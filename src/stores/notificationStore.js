@@ -5,6 +5,12 @@ export const useNotificationStore = defineStore("notification", () => {
    const notifications = ref(null);
    const isLoading = ref(false);
    const errors = ref(null);
+   const deletedNotifyId = ref(null);
+
+   function changeDeletedNotify(id) {
+      deletedNotifyId.value = id;
+   }
+
    function getNotifications() {
       return new Promise((resolve, reject) => {
          isLoading.value = true;
@@ -59,6 +65,8 @@ export const useNotificationStore = defineStore("notification", () => {
       isLoading,
       errors,
       notifications,
+      deletedNotifyId,
+      changeDeletedNotify,
       getNotifications,
       getOneNotification,
       deleteNotification,

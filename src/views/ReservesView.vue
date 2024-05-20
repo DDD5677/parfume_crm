@@ -147,11 +147,13 @@ import { useProductStore } from '@/stores/productStore';
 import { useRoute, useRouter } from 'vue-router';
 import { Coin } from '@element-plus/icons-vue'
 import { ElNotification } from 'element-plus';
+import { useNotificationStore } from '@/stores/notificationStore';
 const router = useRouter()
 const route = useRoute()
 //stores
 const reserveStore = useReserveStore()
 const productStore = useProductStore()
+const notificationStore = useNotificationStore()
 //date formatter
 const formatterDate = (row, column, date, index) => {
 	return dateFormat(date)
@@ -258,6 +260,9 @@ const updateReserves = () => {
 		ElNotification({
 			title: "Zaxira tahrirlandi",
 			type: 'success',
+		})
+		notificationStore.deleteNotification(notificationStore.deletedNotifyId).then((res) => {
+			notificationStore.getNotifications()
 		})
 		reserveStore.getReserves({ page: 1, filter: filter.value })
 		drawerReserveUpdate.value = false;
