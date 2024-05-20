@@ -45,7 +45,8 @@
 					<div style="display: flex; align-items: center;gap: 15px">
 						<div class="notify">
 							<img src="@/assets/images/bell.svg" alt="" @click="dialogNotification = true">
-							<span class="notify-count">{{ notificationStore.notifications?.length }}</span>
+							<span v-if="notificationStore.notifications?.length" class="notify-count">{{
+						notificationStore.notifications?.length }}</span>
 						</div>
 						<img class="logout" src="@/assets/images/logout.svg" alt="" @click="logout">
 					</div>
