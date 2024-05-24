@@ -14,7 +14,7 @@
 					</div>
 					<p class="text">HMM! NIMADIR XATO KETDI. INTERNET BILAN ALOQANI TEKSHIRING VA QAYTA URINIB KO’RING</p>
 					<div class="btns">
-						<dark-button @click="window.reload()" size="20px">Qayta urinish</dark-button>
+						<dark-button @click="goBack" size="20px">Qayta urinish</dark-button>
 						<dark-button :to="{ name: 'home', }" replace size="20px" class="light-btn">Asosiy
 							oynaga</dark-button>
 					</div>
@@ -26,7 +26,12 @@
 </template>
 
 <script setup>
+import { useRoute, useRouter } from 'vue-router';
 
+const router = useRouter()
+const goBack = () => {
+	router.back()
+}
 </script>
 
 <style lang="scss" scoped>
