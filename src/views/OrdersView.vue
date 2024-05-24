@@ -42,10 +42,16 @@
 							<el-button @click="handleEdit(scope.$index, scope.row)" :icon="Edit" style="font-size: 20px;">
 
 							</el-button>
-							<el-button type="danger" @click="handleDelete(scope.$index, scope.row)" :icon="Delete"
-								style="font-size: 20px;">
+							<el-popconfirm width="240" confirm-button-text="Ha" cancel-button-text="Yo'q" :icon="InfoFilled"
+								icon-color="#04178b" title="Rostdan ham o'chirishni xohliszmi?"
+								@confirm="handleDelete(scope.$index, scope.row)">
+								<template #reference>
+									<el-button type="danger" :icon="Delete" style="font-size: 20px;">
 
-							</el-button>
+									</el-button>
+								</template>
+							</el-popconfirm>
+
 						</template>
 					</el-table-column>
 				</el-table>
@@ -172,7 +178,7 @@
 
 <script setup>
 import { ref, watch } from 'vue';
-import { Search, Edit, Delete, Coin } from '@element-plus/icons-vue'
+import { Search, Edit, Delete, Coin, InfoFilled } from '@element-plus/icons-vue'
 import { reactive } from 'vue'
 import { useOrderStore } from '@/stores/orderStore';
 import { dateFormat } from '@/helpers/formatDate';
