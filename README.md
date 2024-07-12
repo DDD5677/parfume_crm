@@ -1,29 +1,20 @@
-# .
+# Ma'mura perfume
+Admin panel for an online perfume shop.
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+# Setup Project 💻
+1. Clone repository
+```
+git clone git@github.com:DDD5677/parfume_crm.git
+```
+2. Install all dependencies.
+```
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
+3. Run project in developer mode.
+```
 npm run dev
 ```
-
-### Compile and Minify for Production
-
-```sh
+4. Build project.
+```
 npm run build
 ```
